@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ByteEdge. - Coming Soon</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+    <style>
+        :root {
+            --dark: #1A1A1A;
+            --accent: #2A6DFF;
+            --text: #E8E8E8;
+            --gray: #6B6B6B;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0892d0, #4b0082);
+            background-size: cover;
+            background-position: center;
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .company-name {
+            font-weight: 800;
+            font-size: 4rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .coming-soon {
+            font-size: 1.25rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+        }
+
+        .main-content {
+            background: rgba(30, 30, 30, 0.95);
+            padding: 2rem;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 600px;
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.15);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        input, textarea {
+            padding: 1rem;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 15px rgba(42, 109, 255, 0.3);
+            outline: none;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .btn {
+            background: var(--accent);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .footer {
+            margin-top: 3rem;
+            text-align: center;
+            color: var(--gray);
+            font-size: 0.9rem;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .footer-contact {
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .footer-contact a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-contact a:hover {
+            opacity: 0.9;
+            text-decoration: underline;
+        }
+
+        .hidden-name {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            font-style: italic;
+            display: inline-block;
+            width: 0;
+            overflow: visible;
+        }
+
+        .footer:hover .hidden-name {
+            opacity: 1;
+            width: auto;
+        }
+
+        .code-particle {
+            position: fixed;
+            font-family: 'Courier New', monospace;
+            color: rgba(96,96,96,0.4);
+            font-size: 12px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Responsive Additions */
+        @media (max-width: 768px) {
+            .company-name {
+                font-size: 3rem;
+            }
+            .tagline {
+                font-size: 1.25rem;
+            }
+            .coming-soon {
+                font-size: 1.1rem;
+            }
+            .container {
+                padding: 1.5rem;
+            }
+            .main-content {
+                padding: 1.5rem;
+            }
+            .footer-contact {
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .company-name {
+                font-size: 2.5rem;
+            }
+            .tagline {
+                font-size: 1.1rem;
+            }
+            .coming-soon {
+                font-size: 1rem;
+            }
+            input, textarea {
+                padding: 0.8rem;
+            }
+            .btn {
+                padding: 0.8rem 1.5rem;
+            }
+            .checkbox-group {
+                flex-wrap: wrap;
+            }
+            .footer {
+                font-size: 0.8rem;
+            }
+            .footer-contact {
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (min-width: 1600px) {
+            .container {
+                max-width: 1400px;
+            }
+            .company-name {
+                font-size: 5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="company-name">ByteEdge.</h1>
+            <p class="tagline">Empowering Digital Transformation</p>
+            <p class="coming-soon">Launching 2025</p>
+        </header>
+
+        <div class="main-content">
+            <form>
+                <input type="text" placeholder="Full Name" required>
+                <input type="email" placeholder="Email Address" required>
+                <textarea placeholder="Your Message" rows="5" required></textarea>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="newsletter" required>
+                    <label for="newsletter">Subscribe to updates</label>
+                </div>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+
+        <div class="footer">
+            <p class="footer-contact">
+                Contact us: <a href="mailto:info@byteedge.services">info@byteedge.services</a>
+            </p>
+            <p>
+                © 2025 ByteEdge. Technologies / Built with code and<span class="hidden-name"> Bia</span>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Create falling code particles
+        function createParticles() {
+            const snippets = ['<div>','function()','{}','const','let','=>','npm','git','docker'];
+            
+            setInterval(() => {
+                const particle = document.createElement('div');
+                particle.className = 'code-particle';
+                particle.textContent = snippets[Math.floor(Math.random() * snippets.length)];
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.top = '-50px';
+                
+                document.body.appendChild(particle);
+
+                gsap.to(particle, {
+                    y: window.innerHeight + 100,
+                    x: `+=${Math.random() * 100 - 50}`,
+                    duration: 10 + Math.random() * 5,
+                    ease: "none",
+                    onComplete: () => particle.remove()
+                });
+            }, 500);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+            gsap.from(".company-name", {duration: 1, opacity: 0, y: -30});
+            gsap.from(".tagline", {duration: 1, opacity: 0, delay: 0.3});
+            gsap.from(".main-content", {duration: 1, opacity: 0, y: 30, delay: 0.6});
+        });
+
+        // Form handling
+        document.querySelector("form").addEventListener("submit", (e) => {
+            e.preventDefault();
+            alert("Thank you for your message! We'll be in touch.");
+        });
+    </script>
+</body>
+</html>
